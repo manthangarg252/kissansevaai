@@ -1,189 +1,173 @@
-# 🌾 KissanSevaAI – AI-Powered Smart Farming Platform
+# KissanSevaAI 🌾
 
 <div align="center">
-
-**A comprehensive AI-driven agriculture platform revolutionizing farming through intelligent crop disease detection, real-time market insights, and smart agricultural assistance**
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com/)
-[![React](https://img.shields.io/badge/React-18+-61dafb.svg)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178c6.svg)](https://www.typescriptlang.org/)
-[![Node.js](https://img.shields.io/badge/Node.js-16+-339933.svg)](https://nodejs.org/)
-
-[Demo](#-live-demo) • [Features](#-features--innovation) • [Architecture](#-technical-architecture) • [Impact](#-social-impact) • [Setup](#-installation--setup)
-
+  
+  **Smart Farming Platform powered by AI**
+  
+  [![Made with React](https://img.shields.io/badge/Made%20with-React-61DAFB?style=flat&logo=react)](https://reactjs.org/)
+  [![Powered by Gemini](https://img.shields.io/badge/Powered%20by-Gemini%20AI-4285F4?style=flat&logo=google)](https://ai.google.dev/)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=flat&logo=typescript)](https://www.typescriptlang.org/)
+  [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 </div>
 
 ---
 
-## 🎯 Problem Statement
+## 📋 Table of Contents
 
-Agriculture faces critical challenges that threaten food security and farmer livelihoods:
-
-- **❌ Disease Outbreaks**: Crop diseases cause 20-40% yield losses globally, with delayed detection leading to devastating economic impacts
-- **❌ Limited Expert Access**: Over 70% of Indian farmers lack timely access to agricultural experts, especially in rural areas
-- **❌ Market Information Gap**: Farmers lose 15-30% of potential income due to lack of real-time market price information
-- **❌ Technology Barrier**: Complex agricultural apps exclude low-literacy farmers who need them most
-- **❌ Fragmented Solutions**: Farmers must use multiple platforms for different needs, creating inefficiency
-
-### 💡 Our Solution
-
-**KissanSevaAI** is a unified, AI-powered smart farming platform that democratizes access to agricultural expertise, market intelligence, and cutting-edge technology—all through a simple, voice-enabled, multi-language interface designed for farmers.
-
----
-## ✨ Features & Innovation
-
-### 🏆 Core AI-Powered Features
-
-#### 1. 🔬 Intelligent Crop Disease Detection
-**The Innovation:**
-- Custom-trained Deep Learning model using Vision Transformers (ViT)
-- **15+ disease classifications** with 92%+ accuracy
-- Real-time cloud inference through dedicated FastAPI ML service
-- Instant results with confidence scores and actionable recommendations
-
-**Why It Matters:**
-- Detects diseases **days before visible symptoms** appear
-- Reduces crop loss by enabling early intervention
-- Eliminates need for expensive on-site expert consultations
-
-#### 2. 🤖 AI-Powered Farming Assistant
-**The Innovation:**
-- Intelligent chatbot trained on agricultural knowledge base
-- Context-aware responses for farming scenarios
-- Supports both **text and voice input** for accessibility
-- Multi-turn conversation capability for complex queries
-
-**Why It Matters:**
-- 24/7 access to farming expertise
-- Answers in natural language, not technical jargon
-- Breaks literacy barriers through voice interaction
-
-#### 3. 📊 Real-Time Mandi Price Intelligence
-**The Innovation:**
-- Live integration with government mandi price APIs
-- Historical price trend analysis and visualization
-- Predictive insights for optimal selling timing
-- Multi-crop price comparison dashboard
-
-**Why It Matters:**
-- Empowers farmers with **market negotiation power**
-- Prevents exploitation by middlemen
-- Increases farmer income by 15-25% through informed selling
-
-#### 4. 🎙️ Voice-First Interface
-**The Innovation:**
-- Full voice navigation and input support
-- Speech-to-text for queries, text-to-speech for responses
-- Designed for farmers with low digital literacy
-
-**Why It Matters:**
-- Removes technology adoption barriers
-- Accessible to **70% more farmers** who struggle with typing
-- Natural interaction mimics human conversation
-
-#### 5. 🌐 Multi-Language Support (5 Languages)
-**The Innovation:**
-- Complete i18n implementation across UI and AI responses
-- Languages: **English, Hindi, Punjabi, Marathi, Sanskrit**
-- Seamless language switching without page reload
-
-**Why It Matters:**
-- Serves farmers across diverse Indian regions
-- Respects linguistic diversity and cultural context
-- Increases platform adoption by 3x in regional areas
+- [About](#about)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Multilingual Support](#multilingual-support)
+- [API Reference](#api-reference)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-### 🛠️ Comprehensive Platform Features
+## 🌟 About
 
-| Feature | Description | Farmer Benefit |
-|---------|-------------|----------------|
-| 🏛️ **Government Schemes** | Curated database of farming schemes & subsidies | Access ₹50,000+ in unclaimed benefits |
-| 🏦 **Loan Assistance** | Agricultural loan guidance & eligibility checker | Simplified access to farming credit |
-| 🐄 **Livestock Management** | Cattle health tips & veterinary resources | Reduce livestock mortality by 30% |
-| 🌡️ **IoT Monitoring** | Real-time sensor data visualization dashboard | Optimize irrigation & reduce water waste |
-| 🌍 **Carbon Credits** | Sustainability farming & carbon offset programs | New revenue stream (₹10-15k/acre/year) |
-| 📍 **Traders Directory** | Verified buyer network & direct selling platform | Eliminate middlemen, increase profits |
+**KissanSevaAI** is a comprehensive smart farming platform designed to empower farmers with AI-driven insights and tools. From crop disease detection to market intelligence, loan advisory, and carbon credit estimation, KissanSevaAI brings modern technology to agriculture in an accessible, multilingual interface.
+
+### Why KissanSevaAI?
+
+- 🤖 **AI-Powered Analysis** - Advanced crop disease detection and livestock health monitoring
+- 🌍 **Multilingual** - Available in English, Hindi, Marathi, Punjabi, and Sanskrit
+- 📊 **Real-time Insights** - Live market prices, IoT sensor monitoring, and trends
+- 💰 **Financial Tools** - Loan recommendations, EMI calculators, and eligibility checks
+- 🌱 **Sustainability** - Carbon credit estimation and organic farming guidance
+- 🔍 **Market Intelligence** - Trader directories and comprehensive market analysis
 
 ---
 
-## 🏗️ Technical Architecture
+## ✨ Features
 
-### System Design
+### 🔬 **Crop Disease Detection**
+- Upload crop images for instant AI analysis
+- Identify diseases with confidence scores
+- Get organic and chemical treatment recommendations
+- Prevention strategies and severity assessment
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        KissanSevaAI Platform                     │
-└─────────────────────────────────────────────────────────────────┘
-                                 │
-                    ┌────────────┼────────────┐
-                    │            │            │
-            ┌───────▼──────┐ ┌──▼─────┐ ┌────▼────────┐
-            │   Frontend   │ │Backend │ │ ML Service  │
-            │ React + TS   │ │Node.js │ │   FastAPI   │
-            │   + Vite     │ │Express │ │   PyTorch   │
-            └──────────────┘ └────────┘ └─────────────┘
-                    │            │            │
-                    │     ┌──────▼──────┐     │
-                    │     │  REST APIs  │     │
-                    └─────►             ◄─────┘
-                          │  Services   │
-                          └──────┬──────┘
-                                 │
-              ┌──────────────────┼──────────────────┐
-              │                  │                  │
-        ┌─────▼──────┐  ┌────────▼────────┐  ┌─────▼──────┐
-        │ Mandi API  │  │  AI Assistant   │  │  Database  │
-        │ (Live Data)│  │  (Claude/GPT)   │  │  Storage   │
-        └────────────┘  └─────────────────┘  └────────────┘
-```
+### 🐄 **Livestock Care**
+- Health condition analysis from images
+- Symptom identification
+- Treatment recommendations
+- Veterinary advice
 
-### Technology Stack
+### 📈 **Market Insights**
+- Real-time market price tracking
+- Trend analysis (up/down/stable indicators)
+- State-wise price comparisons
+- SWOT analysis for farm strategies
 
-#### Frontend Layer
-```typescript
-Tech: React 18 + TypeScript + Vite
-Features:
-  ✅ Responsive design (mobile-first)
-  ✅ Progressive Web App (PWA) ready
-  ✅ i18next internationalization
-  ✅ Web Speech API integration
-  ✅ Optimized bundle size (<200KB)
-```
+### 🌡️ **IoT Monitoring**
+- Real-time sensor data visualization
+- Temperature, humidity, soil moisture, pH tracking
+- Historical trends and patterns
+- AI-powered insights and recommendations
 
-#### Backend Layer
-```javascript
-Tech: Node.js + Express.js
-Features:
-  ✅ RESTful API architecture
-  ✅ JWT authentication (optional)
-  ✅ API rate limiting & caching
-  ✅ Microservices-ready design
-  ✅ IoT data simulator for testing
-```
+### 🏛️ **Government Schemes**
+- Comprehensive scheme directory
+- Eligibility checking
+- AI-powered recommendations
+- Direct links to official portals
 
-#### ML Service Layer
-```python
-Tech: Python + FastAPI + PyTorch
-Features:
-  ✅ Custom Vision Transformer model
-  ✅ Async request handling
-  ✅ Model versioning support
-  ✅ GPU acceleration ready
-  ✅ 200+ requests/minute capacity
-```
+### 🤝 **Traders & Buyers Directory**
+- Verified trader listings
+- Location-based search
+- Ratings and reviews
+- Direct contact information
 
-#### Deployment Infrastructure
-```yaml
-Platform: Cloud-native deployment
-Features:
-  ✅ Auto-scaling capabilities
-  ✅ 99.9% uptime SLA
-  ✅ Global CDN distribution
-  ✅ SSL/TLS encryption
-  ✅ Automated CI/CD pipeline
+### 💳 **Loans & Credit Hub**
+- Multiple loan product comparisons
+- EMI calculator
+- AI-powered eligibility assessment
+- Document requirement lists
+- Government and private loan options
+
+### 🌿 **Carbon Credits**
+- Carbon footprint estimation
+- Sustainable practice recommendations
+- Credit calculation based on farm practices
+
+### 💬 **AI Chatbot Assistant**
+- Context-aware farming advice
+- Multilingual support
+- Multiple modes (General, Crop, Livestock, Market, etc.)
+- Voice input capability
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React 19.2** - UI framework
+- **TypeScript 5.8** - Type safety
+- **React Router 7** - Navigation
+- **Tailwind CSS** - Styling
+- **Lucide React** - Icons
+- **i18next** - Internationalization
+
+### AI & Backend
+- **Google Gemini AI (Flash 3)** - AI processing
+- **Node.js** - Server runtime
+- **Express.js** - API framework
+- **MongoDB** - Database
+- **Mongoose** - ODM
+
+### Authentication & Security
+- **JWT** - Token-based authentication
+- **bcryptjs** - Password hashing
+
+### Development Tools
+- **Vite 6** - Build tool
+- **ESBuild** - Fast bundler
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js >= 18.0.0
+- npm >= 8.0.0
+- Gemini API Key ([Get one here](https://ai.google.dev/))
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/kissansevaai.git
+   cd kissansevaai
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Configure environment variables**
+   
+   Create a `.env.local` file in the root directory:
+   ```env
+   GEMINI_API_KEY=your_gemini_api_key_here
+   ```
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser**
+   
+   Navigate to `http://localhost:3000`
+
+### Build for Production
+
+```bash
+npm run build
+npm run preview
 ```
 
 ---
@@ -192,401 +176,315 @@ Features:
 
 ```
 kissansevaai/
-│
-├── 📱 Frontend Application
-│   ├── components/
-│   │   ├── ui/              # Reusable UI components
-│   │   ├── layout/          # Layout wrappers
-│   │   └── features/        # Feature-specific components
-│   │
-│   ├── pages/               # Application pages (11 pages)
-│   │   ├── Dashboard.tsx
-│   │   ├── CropDisease.tsx
-│   │   ├── Chatbot.tsx
-│   │   ├── MarketInsights.tsx
-│   │   ├── MandiPrices.tsx
-│   │   ├── Schemes.tsx
-│   │   ├── Loans.tsx
-│   │   ├── Livestock.tsx
-│   │   ├── IoTMonitoring.tsx
-│   │   ├── CarbonCredits.tsx
-│   │   └── TradersDirectory.tsx
-│   │
-│   ├── services/
-│   │   ├── api/             # API integration layer
-│   │   ├── voice/           # Speech recognition utilities
-│   │   └── i18n/            # Internationalization config
-│   │
-│   └── locales/             # Translation files (5 languages)
-│       ├── en.json          # English
-│       ├── hi.json          # Hindi
-│       ├── pa.json          # Punjabi
-│       ├── mr.json          # Marathi
-│       └── sa.json          # Sanskrit
-│
-├── 🖥️ Backend Service
-│   ├── config/              # Environment configurations
-│   ├── controllers/         # Route controllers
-│   ├── middleware/          # Custom middleware
-│   ├── models/              # Data models
-│   ├── routes/              # API route definitions
-│   ├── services/            # Business logic layer
-│   ├── scripts/
-│   │   └── iotSimulator.js  # IoT sensor data generator
-│   └── server.js            # Entry point
-│
-├── 🧠 ML Service
-│   ├── app.py               # FastAPI application
-│   ├── models/
-│   │   └── best_vit_tiny_patch16_224.pth  # Trained model
-│   ├── utils/
-│   │   ├── preprocessing.py # Image preprocessing
-│   │   └── inference.py     # Model inference logic
-│   ├── requirements.txt
-│   └── README.md
-│
-├── 📚 Documentation
-│   ├── API.md               # API documentation
-│   ├── DEPLOYMENT.md        # Deployment guide
-│   └── CONTRIBUTING.md      # Contribution guidelines
-│
-├── package.json
-├── vite.config.ts
-├── tsconfig.json
-└── README.md
+├── components/           # Reusable React components
+│   └── Layout.tsx       # Main layout wrapper
+├── pages/               # Page components
+│   ├── Dashboard.tsx    # Main dashboard
+│   ├── CropDisease.tsx  # Crop disease detection
+│   ├── Livestock.tsx    # Livestock health
+│   ├── MarketInsights.tsx
+│   ├── IoTMonitoring.tsx
+│   ├── GovernmentSchemes.tsx
+│   ├── TradersDirectory.tsx
+│   ├── CarbonCredits.tsx
+│   ├── LiveMarketPrices.tsx
+│   ├── LoansPage.tsx
+│   ├── Chatbot.tsx
+│   ├── Login.tsx
+│   └── Signup.tsx
+├── locales/             # Translation files
+│   ├── en.ts           # English
+│   ├── hi.ts           # Hindi
+│   ├── mr.ts           # Marathi
+│   ├── pa.ts           # Punjabi
+│   └── sa.ts           # Sanskrit
+├── constants.tsx        # App constants & data
+├── geminiService.ts     # Gemini AI integration
+├── types.ts             # TypeScript types
+├── i18n.ts              # i18n configuration
+├── index.tsx            # App entry point
+└── index.html           # HTML template
 ```
 
 ---
 
-## 🎯 Social Impact
+## 🌐 Multilingual Support
 
-### Target Users
-- **Primary**: 1.5 million+ small-scale farmers (< 5 acres)
-- **Secondary**: Agricultural cooperatives, rural extension workers
-- **Tertiary**: Agricultural students and researchers
+KissanSevaAI supports **5 languages**:
 
-### Measurable Impact Goals
+| Language | Code | Script |
+|----------|------|--------|
+| English | `en` | Latin |
+| Hindi | `hi` | Devanagari |
+| Marathi | `mr` | Devanagari |
+| Punjabi | `pa` | Gurmukhi |
+| Sanskrit | `sa` | Devanagari |
 
-| Metric | Baseline | Target (Year 1) | Impact |
-|--------|----------|-----------------|--------|
-| **Crop Loss Reduction** | 30% avg loss | <15% loss | Save ₹45,000/farmer/year |
-| **Income Increase** | ₹80,000/year | ₹100,000/year | +25% through better pricing |
-| **Expert Access Time** | 7-15 days | <1 hour | 168x faster problem resolution |
-| **Scheme Adoption** | 12% awareness | 60% adoption | ₹30,000 avg benefits/farmer |
-| **User Adoption** | 0 | 100,000 farmers | Digital inclusion milestone |
+### Switching Languages
 
-### Sustainable Development Goals (SDGs)
-
-✅ **SDG 1**: No Poverty - Increase farmer income and reduce losses  
-✅ **SDG 2**: Zero Hunger - Improve crop yields and food security  
-✅ **SDG 8**: Decent Work - Empower farmers with fair market access  
-✅ **SDG 9**: Industry Innovation - Bring AI/ML to agriculture  
-✅ **SDG 10**: Reduced Inequalities - Bridge urban-rural technology gap  
-✅ **SDG 13**: Climate Action - Promote sustainable farming practices  
+Use the language selector in the header to switch between languages. All content, including AI responses, will be delivered in the selected language.
 
 ---
 
-## 🏆 What Makes This Special
+## 🔌 API Reference
 
-### Innovation Highlights
+### Gemini AI Service
 
-1. **🎯 Unified Platform Approach**
-   - First platform to integrate disease detection, AI chat, market prices, and farmer services in ONE place
-   - Eliminates need for multiple apps, reducing farmer overwhelm
-
-2. **🗣️ Voice-First Design Philosophy**
-   - Built ground-up for voice interaction, not retrofitted
-   - Handles regional accents and farm-specific terminology
-
-3. **🌾 Domain-Specific AI Training**
-   - Custom-trained model on Indian crop varieties
-   - Contextual chatbot trained on local farming practices
-
-4. **📊 Real-Time Data Integration**
-   - Live mandi price feeds updated every 30 minutes
-   - IoT sensor integration for precision farming
-
-5. **🌍 Scalable & Open**
-   - Cloud-native architecture can serve 10M+ farmers
-   - Open-source model for community contribution
-
-### Technical Achievements
-
-- ✅ **92%+ disease detection accuracy** (validated on 10,000+ images)
-- ✅ **<2 second inference time** for crop disease prediction
-- ✅ **99.9% uptime** across all deployed services
-- ✅ **5 languages** with full UI/UX translation
-- ✅ **Mobile-responsive** design (works on ₹5,000 smartphones)
-
----
-
-## ⚙️ Installation & Setup
-
-### Quick Start (3 Minutes)
-
-#### Prerequisites
-```bash
-Node.js 16+  |  Python 3.8+  |  Git  |  npm/yarn
+#### Crop Disease Analysis
+```typescript
+analyzeCropDisease(
+  imageBase64: string,
+  location: string,
+  soilType: string,
+  language: Language
+): Promise<CropDiseaseResult>
 ```
 
-#### 1️⃣ Clone Repository
-```bash
-git clone https://github.com/manthangarg252/kissansevaai.git
-cd kissansevaai
-```
-
-#### 2️⃣ Frontend Setup
-```bash
-npm install
-npm run dev
-# Runs on http://localhost:5173
-```
-
-#### 3️⃣ Backend Setup
-```bash
-cd backend
-npm install
-npm start
-# Runs on http://localhost:3000
-```
-
-#### 4️⃣ ML Service Setup
-```bash
-cd ml-service
-pip install -r requirements.txt
-uvicorn app:app --reload
-# Runs on http://localhost:8000
-```
-
-### Environment Configuration
-
-**Frontend `.env`**
-```env
-VITE_BACKEND_URL=http://localhost:3000
-VITE_ML_SERVICE_URL=http://localhost:8000
-VITE_ENABLE_VOICE=true
-```
-
-**Backend `.env`**
-```env
-PORT=3000
-ML_SERVICE_URL=http://localhost:8000
-MANDI_API_KEY=your_api_key_here
-NODE_ENV=development
-```
-
-**ML Service `.env`**
-```env
-MODEL_PATH=./models/best_vit_tiny_patch16_224.pth
-MAX_WORKERS=4
-```
-
----
-
-## 📡 API Documentation
-
-### Core Endpoints
-
-#### Disease Detection
-```http
-POST /api/ml/predict
-Content-Type: multipart/form-data
-
-Body: { file: <image> }
-
-Response:
+**Returns:**
+```typescript
 {
-  "disease": "Tomato_Late_Blight",
-  "confidence": 0.94,
-  "recommendations": [
-    "Apply copper-based fungicide immediately",
-    "Remove infected leaves",
-    "Improve air circulation"
-  ]
+  cropName: string;
+  diseaseName: string;
+  confidence: number;
+  summary: string;
+  severity: "Low" | "Medium" | "High";
+  treatment: {
+    organic: string[];
+    chemical: string[];
+  };
+  prevention: string[];
+  source: "gemini";
 }
 ```
 
-#### AI Chatbot
-```http
-POST /api/chat
-Content-Type: application/json
+#### Livestock Analysis
+```typescript
+analyzeLivestockDisease(
+  imageBase64: string,
+  animalType: string,
+  language: Language
+): Promise<LivestockResult>
+```
 
-Body: {
-  "message": "How do I prevent wheat rust?",
-  "language": "hi"
-}
-
-Response:
+**Returns:**
+```typescript
 {
-  "reply": "गेहूं के रस्ट को रोकने के लिए...",
-  "suggestions": ["disease_info", "treatment_options"]
+  conditionName: string;
+  confidence: string;
+  summary: string;
+  symptoms: string[];
+  treatment: string[];
+  prevention: string[];
+  vetAdvice: string;
 }
 ```
 
-#### Mandi Prices
-```http
-GET /api/mandi/prices?crop=wheat&state=punjab
+#### Market Recommendations
+```typescript
+getMarketRecommendations(
+  farmData: object,
+  language: Language
+): Promise<string>
+```
 
-Response:
+#### Loan Advisory
+```typescript
+getLoanAdvice(
+  profileData: object,
+  language: Language
+): Promise<LoanAdvisorResult>
+```
+
+**Returns:**
+```typescript
 {
-  "crop": "wheat",
-  "prices": [
-    {
-      "market": "Ludhiana",
-      "price": 2050,
-      "date": "2025-01-20",
-      "trend": "rising"
-    }
-  ]
+  eligibilityLevel: "High" | "Medium" | "Low";
+  recommendedLoan: string;
+  amountRange: string;
+  estimatedInterestRange: string;
+  documents: string[];
+  nextSteps: string[];
+  riskNotes: string[];
 }
 ```
 
-**Full API Documentation**: Available at `/docs` when services are running
+#### Carbon Credit Estimation
+```typescript
+estimateCarbonCredits(
+  farmData: object,
+  language: Language
+): Promise<string>
+```
+
+#### Voice Field Extraction
+```typescript
+extractFieldsFromSpeech(
+  text: string,
+  fields: string[],
+  language: Language
+): Promise<object>
+```
 
 ---
 
-## 🧪 Testing & Quality
+## 🎨 Key Components
 
-### Test Coverage
-- ✅ Unit Tests: 85% coverage
-- ✅ Integration Tests: All critical paths
-- ✅ ML Model Validation: 10,000+ test images
-- ✅ Cross-browser Testing: Chrome, Firefox, Safari, Edge
-- ✅ Mobile Testing: Android 8+, iOS 13+
+### Dashboard
+The main landing page showcasing all available features with quick access cards.
 
-### Performance Benchmarks
-- Page Load Time: <2 seconds
-- API Response Time: <500ms (95th percentile)
-- ML Inference: <2 seconds
-- Concurrent Users Supported: 10,000+
+### Crop Disease Detection
+- Image upload with preview
+- AI-powered disease identification
+- Treatment recommendations (organic & chemical)
+- Prevention strategies
+- Confidence scoring
 
----
+### Livestock Care
+- Animal health monitoring
+- Symptom analysis
+- Treatment plans
+- Veterinary advice integration
 
-## 🛣️ Roadmap & Future Enhancements
+### IoT Monitoring
+- Real-time sensor data visualization
+- Historical data trends
+- Alerts and notifications
+- AI-powered insights
 
-### Phase 1 (Completed) ✅
-- [x] Core disease detection model
-- [x] Multi-language support (5 languages)
-- [x] Real-time mandi prices
-- [x] AI chatbot functionality
-- [x] Voice input/output
-- [x] Cloud deployment
+### Market Insights
+- Live price tracking
+- Trend analysis
+- SWOT analysis generation
+- Market recommendations
 
-### Phase 2 (Next 3 Months) 🚧
-- [ ] Mobile app (React Native)
-- [ ] Weather forecasting integration
-- [ ] Soil health analysis module
-- [ ] Offline mode support
-- [ ] Farmer community forum
-- [ ] Video consultation with experts
+### Loans & Credit Hub
+- Loan product comparison
+- EMI calculator
+- AI-powered eligibility checker
+- Document checklist
 
-### Phase 3 (6-12 Months) 🎯
-- [ ] Blockchain-based supply chain tracking
-- [ ] Drone imagery integration
-- [ ] Crop yield prediction AI
-- [ ] Insurance claim automation
-- [ ] Marketplace for farm equipment
-- [ ] Expansion to 15+ languages
+### Government Schemes
+- Searchable scheme database
+- Category filtering
+- Eligibility checking
+- Direct links to official portals
 
 ---
 
 ## 🤝 Contributing
 
-We believe in open innovation! Contributions are welcome from:
-- 👨‍💻 Developers (frontend, backend, ML)
-- 🌾 Agricultural domain experts
-- 🎨 UI/UX designers
-- 📝 Technical writers
-- 🧪 QA testers
-
-### How to Contribute
+We welcome contributions! Please follow these steps:
 
 1. Fork the repository
-2. Create feature branch: `git checkout -b feature/AmazingFeature`
-3. Commit changes: `git commit -m 'Add AmazingFeature'`
-4. Push to branch: `git push origin feature/AmazingFeature`
-5. Open Pull Request
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-**See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines**
+### Code Standards
+
+- Use TypeScript for type safety
+- Follow the existing code style
+- Write meaningful commit messages
+- Add comments for complex logic
+- Test your changes thoroughly
+
+### Development Guidelines
+
+- All AI responses must support multilingual output
+- Follow the existing component structure
+- Use Tailwind utility classes for styling
+- Ensure mobile responsiveness
+- Handle loading and error states properly
 
 ---
 
-## 📄 License
+## 🐛 Known Issues
 
-This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file.
-
-```
-MIT License - Free to use, modify, and distribute
-Commercial use permitted | Attribution required
-```
+- Voice input may not work on all browsers (Chrome recommended)
+- Image upload limited to 5MB per file
+- IoT sensor data is simulated for demo purposes
 
 ---
 
-## 👥 Team
+## 📝 License
 
-**Built with ❤️ by passionate developers committed to agricultural innovation**
-
-- **Lead Developer**: Manthan Garg ([@manthangarg252](https://github.com/manthangarg252))
-- **Contributors**: Open-source community
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 🙏 Acknowledgments
 
-- 🌾 Farmers who provided invaluable feedback during development
-- 📚 Agricultural research institutions for dataset contributions
-- 🛠️ Open-source communities: React, FastAPI, PyTorch, Hugging Face
-- 🏛️ Government of India for public mandi price APIs
-- 🎓 Academic advisors and mentors
+- **Google Gemini AI** for powerful AI capabilities
+- **React Team** for the amazing framework
+- **Tailwind CSS** for utility-first styling
+- **Lucide** for beautiful icons
+- **i18next** for internationalization support
+- All farmers who inspired this project
 
 ---
 
-## 📬 Contact & Support
+## 📞 Support
 
-### For Hackathon Judges
-- **📧 Email**: manthan.garg@example.com
-- **💼 LinkedIn**: [Your LinkedIn]
-- **🌐 Portfolio**: [Your Portfolio]
+For support, email support@kissansevaai.com or create an issue in the repository.
 
-### For Users & Contributors
-- **🐛 Report Issues**: [GitHub Issues](https://github.com/manthangarg252/kissansevaai/issues)
-- **💬 Discussions**: [GitHub Discussions](https://github.com/manthangarg252/kissansevaai/discussions)
-- **📖 Documentation**: [Wiki](https://github.com/manthangarg252/kissansevaai/wiki)
+---
+
+## 🗺️ Roadmap
+
+- [ ] Mobile app (React Native)
+- [ ] Offline mode support
+- [ ] Weather integration
+- [ ] Pest prediction model
+- [ ] Community forum
+- [ ] Video tutorials
+- [ ] AR crop scanning
+- [ ] Blockchain for carbon credits
+- [ ] SMS alerts for market prices
+- [ ] Integration with government databases
 
 ---
 
 ## 📊 Project Statistics
 
-**GitHub Repository**: [manthangarg252/kissansevaai](https://github.com/manthangarg252/kissansevaai)
+- **Total Components:** 15+
+- **Supported Languages:** 5
+- **AI Models:** Gemini 3 Flash
+- **Lines of Code:** 5,000+
+- **API Endpoints:** 10+
+
+---
+
+## 🔐 Security
+
+- JWT-based authentication
+- Password hashing with bcryptjs
+- Environment variable protection
+- Input validation and sanitization
+- CORS configuration
+
+---
+
+## 🌍 Deployment
+
+### Deploy to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/kissansevaai)
+
+### Deploy to Netlify
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/yourusername/kissansevaai)
 
 ---
 
 <div align="center">
-
-## 🌾 Transforming Agriculture, One Farmer at a Time
-
-### KissanSevaAI - Where AI Meets Agriculture
-
-**"Technology should serve those who feed the world"**
-
----
-
-### 🏆 Built for Hackathon | Ready for Production | Designed for Impact
-
----
-
-[![Deploy Status](https://img.shields.io/badge/Deployment-Live-success?style=for-the-badge)](https://your-frontend-url.com)
-[![Farmers Helped](https://img.shields.io/badge/Farmers%20Helped-Growing-blue?style=for-the-badge)](#)
-[![Impact Score](https://img.shields.io/badge/Impact-High-orange?style=for-the-badge)](#)
-
----
-
-**⭐ If this project resonates with you, please star the repository! ⭐**
-
-**🤝 Interested in collaboration? Let's connect!**
-
----
-
-*Made in India 🇮🇳 | For Indian Farmers | By Tech Enthusiasts*
-
+  
+  **Made with ❤️ for Farmers**
+  
+  [Website](https://kissansevaai.com) • [Documentation](https://docs.kissansevaai.com) • [Report Bug](https://github.com/yourusername/kissansevaai/issues) • [Request Feature](https://github.com/yourusername/kissansevaai/issues)
+  
+  ---
+  
+  ⭐ Star this repository if you find it helpful!
+  
 </div>
