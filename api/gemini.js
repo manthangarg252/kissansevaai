@@ -4,7 +4,14 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { prompt, imageBase64, mimeType, systemInstruction, responseMimeType, generationConfig } = req.body;
+    const {
+      prompt,
+      imageBase64,
+      mimeType,
+      systemInstruction,
+      responseMimeType,
+      generationConfig,
+    } = req.body;
 
     if (!prompt) {
       return res.status(400).json({ error: "Prompt is required" });
@@ -21,18 +28,20 @@ export default async function handler(req, res) {
       apiKey;
 
     const parts = [];
+
     if (imageBase64) {
       parts.push({
         inlineData: {
-          mimeType: mimeType || 'image/jpeg',
-          data: imageBase64
-        }
+          mimeType: mimeType || "image/jpeg",
+          data: imageBase64,
+        },
       });
     }
+
     parts.push({ text: prompt });
 
     const bodyObj = {
-      contents: [{ parts }]
+      contents: [{ parts }],
     };
 
     if (systemInstruction) {
@@ -42,7 +51,7 @@ export default async function handler(req, res) {
     if (responseMimeType || generationConfig) {
       bodyObj.generationConfig = {
         responseMimeType: responseMimeType || "text/plain",
-        ...generationConfig
+        ...generationConfig,
       };
     }
 
@@ -53,6 +62,10 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
+
+    if (!response.ok) {
+      return res.status(response.status).json(data);
+    }
 
     return res.status(200).json(data);
   } catch (err) {
