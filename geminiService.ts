@@ -1,8 +1,5 @@
 
-import { GoogleGenAI, Type } from "@google/genai";
 import { Language, LoanAdvisorResult } from "./types";
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 const getLangName = (lang: Language) => {
   const map: Record<string, string> = {
@@ -40,12 +37,24 @@ export const analyzeCropDisease = async (
       "source": "gemini"
     }`;
 
-  const result = await ai.models.generateContent({
-    model: 'gemini-3-flash-preview',
-    contents: [{ parts: [{ inlineData: { mimeType: 'image/jpeg', data: imageBase64 } }, { text: prompt }] }],
-    config: { responseMimeType: "application/json", temperature: 0.1 }
+  const res = await fetch("/api/gemini", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      prompt,
+      imageBase64,
+      mimeType: 'image/jpeg',
+      responseMimeType: "application/json",
+      generationConfig: { temperature: 0.1 }
+    }),
   });
-  return JSON.parse(result.text || '{}');
+
+  if (!res.ok) {
+    throw new Error("AI service is temporarily unavailable");
+  }
+
+  const data = await res.json();
+  return JSON.parse(data.candidates[0].content.parts[0].text || '{}');
 };
 
 /**
@@ -70,12 +79,23 @@ export const analyzeLivestockDisease = async (
       "vetAdvice": string
     }`;
 
-  const result = await ai.models.generateContent({
-    model: 'gemini-3-flash-preview',
-    contents: [{ parts: [{ inlineData: { mimeType: 'image/jpeg', data: imageBase64 } }, { text: prompt }] }],
-    config: { responseMimeType: "application/json" }
+  const res = await fetch("/api/gemini", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      prompt,
+      imageBase64,
+      mimeType: 'image/jpeg',
+      responseMimeType: "application/json"
+    }),
   });
-  return JSON.parse(result.text || '{}');
+
+  if (!res.ok) {
+    throw new Error("AI service is temporarily unavailable");
+  }
+
+  const data = await res.json();
+  return JSON.parse(data.candidates[0].content.parts[0].text || '{}');
 };
 
 /**
@@ -86,12 +106,19 @@ export const getGeminiChatResponse = async (message: string, mode: string, langu
   const systemInstruction = `Agriculture AI Assistant KissanSevaAI. Mode: ${mode}. MANDATORY: REPLY ONLY IN ${targetLang}. 
     STRICT RULES: DO NOT use Markdown formatting. No bold, no italics, no bullet stars, no hashtags. 
     Use simple numbering (1., 1.1) and colons for headings (Example: Topic:). Output plain text only.`;
-  const result = await ai.models.generateContent({
-    model: 'gemini-3-flash-preview',
-    contents: message,
-    config: { systemInstruction }
+
+  const res = await fetch("/api/gemini", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt: message, systemInstruction }),
   });
-  return result.text;
+
+  if (!res.ok) {
+    throw new Error("AI service is temporarily unavailable");
+  }
+
+  const data = await res.json();
+  return data.candidates[0].content.parts[0].text;
 };
 
 /**
@@ -103,8 +130,19 @@ export const getMarketRecommendations = async (form: any, language: Language) =>
     MANDATORY: REPLY ENTIRELY IN ${targetLang}.
     STRICT RULES: DO NOT use Markdown formatting. No bold (**), no italics (*), no bullet stars (*), no # headings.
     Use plain text only. Use simple numbering like 1., 1.1 and colons for headings (Example: SWOT Analysis:).`;
-  const result = await ai.models.generateContent({ model: 'gemini-3-flash-preview', contents: prompt });
-  return result.text;
+
+  const res = await fetch("/api/gemini", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt }),
+  });
+
+  if (!res.ok) {
+    throw new Error("AI service is temporarily unavailable");
+  }
+
+  const data = await res.json();
+  return data.candidates[0].content.parts[0].text;
 };
 
 /**
@@ -116,8 +154,19 @@ export const getTraderAdvisory = async (query: string, language: Language) => {
     Focus on market trends, reliable buyer practices, and price negotiation strategies. 
     MANDATORY: REPLY ENTIRELY IN ${targetLang}. Keep it actionable and concise.
     STRICT RULES: DO NOT use Markdown. No stars, no bolding, no hashes. Use plain text and simple numbering only.`;
-  const result = await ai.models.generateContent({ model: 'gemini-3-flash-preview', contents: prompt });
-  return result.text;
+
+  const res = await fetch("/api/gemini", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt }),
+  });
+
+  if (!res.ok) {
+    throw new Error("AI service is temporarily unavailable");
+  }
+
+  const data = await res.json();
+  return data.candidates[0].content.parts[0].text;
 };
 
 /**
@@ -129,8 +178,19 @@ export const getIoTInsights = async (sensorData: any, language: Language) => {
     Provide 3 concise, actionable plain text points for the farmer.
     MANDATORY: REPLY ENTIRELY IN ${targetLang}.
     STRICT RULES: No Markdown, no bolding, no stars. Use simple numbering (1., 2., 3.).`;
-  const result = await ai.models.generateContent({ model: 'gemini-3-flash-preview', contents: prompt });
-  return result.text;
+
+  const res = await fetch("/api/gemini", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt }),
+  });
+
+  if (!res.ok) {
+    throw new Error("AI service is temporarily unavailable");
+  }
+
+  const data = await res.json();
+  return data.candidates[0].content.parts[0].text;
 };
 
 /**
@@ -141,8 +201,19 @@ export const getSchemeRecommendations = async (form: any, language: Language) =>
   const prompt = `Gov Schemes Expert. Recommend 3-5 schemes for: ${JSON.stringify(form)}. 
     MANDATORY: REPLY ENTIRELY IN ${targetLang}.
     STRICT RULES: DO NOT use Markdown. No stars, no bolding, no hashes. Use plain text and simple numbering only. Use colons for titles.`;
-  const result = await ai.models.generateContent({ model: 'gemini-3-flash-preview', contents: prompt });
-  return result.text;
+
+  const res = await fetch("/api/gemini", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt }),
+  });
+
+  if (!res.ok) {
+    throw new Error("AI service is temporarily unavailable");
+  }
+
+  const data = await res.json();
+  return data.candidates[0].content.parts[0].text;
 };
 
 /**
@@ -153,8 +224,19 @@ export const estimateCarbonCredits = async (form: any, language: Language) => {
   const prompt = `Carbon Credit Consultant. Estimate credits for: ${JSON.stringify(form)}. 
     MANDATORY: REPLY ENTIRELY IN ${targetLang}.
     STRICT RULES: DO NOT use Markdown formatting. No stars, no bolding, no hashes. Use plain text only. Use simple numbering.`;
-  const result = await ai.models.generateContent({ model: 'gemini-3-flash-preview', contents: prompt });
-  return result.text;
+
+  const res = await fetch("/api/gemini", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt }),
+  });
+
+  if (!res.ok) {
+    throw new Error("AI service is temporarily unavailable");
+  }
+
+  const data = await res.json();
+  return data.candidates[0].content.parts[0].text;
 };
 
 /**
@@ -167,12 +249,21 @@ export const getLoanAdvice = async (form: any, language: Language): Promise<Loan
     STRICT RULE: Do not use Markdown in text strings.
     Return JSON matching schema for eligibilityLevel, recommendedLoan, amountRange, interest, documents, steps, and risk.`;
 
-  const result = await ai.models.generateContent({
-    model: 'gemini-3-flash-preview',
-    contents: prompt,
-    config: { responseMimeType: "application/json" }
+  const res = await fetch("/api/gemini", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      prompt,
+      responseMimeType: "application/json"
+    }),
   });
-  return JSON.parse(result.text || '{}') as LoanAdvisorResult;
+
+  if (!res.ok) {
+    throw new Error("AI service is temporarily unavailable");
+  }
+
+  const data = await res.json();
+  return JSON.parse(data.candidates[0].content.parts[0].text || '{}') as LoanAdvisorResult;
 };
 
 /**
@@ -187,10 +278,20 @@ export const extractFieldsFromSpeech = async (text: string, fields: string[], la
     - If a value represents a soil type, normalize it to one of: 'Sandy', 'Loamy', 'Clay', 'Silty'.
     - Return a JSON object with strictly these keys: ${fields.join(', ')}.`;
 
-  const result = await ai.models.generateContent({
-    model: 'gemini-3-flash-preview',
-    contents: prompt,
-    config: { responseMimeType: "application/json", temperature: 0.1 }
+  const res = await fetch("/api/gemini", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      prompt,
+      responseMimeType: "application/json",
+      generationConfig: { temperature: 0.1 }
+    }),
   });
-  return JSON.parse(result.text || '{}');
+
+  if (!res.ok) {
+    throw new Error("AI service is temporarily unavailable");
+  }
+
+  const data = await res.json();
+  return JSON.parse(data.candidates[0].content.parts[0].text || '{}');
 };
