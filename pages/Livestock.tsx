@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { getGeminiChatResponse, analyzeLivestockDisease } from '../geminiService';
+import { fileToBase64 } from '../utils';
 import VoiceControls from '../components/VoiceControls.tsx';
 
 interface Message {
@@ -54,12 +55,15 @@ const Livestock: React.FC = () => {
     }
   }, [chatHistory, chatLoading]);
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => setImage(reader.result as string);
-      reader.readAsDataURL(file);
+      try {
+        const base64 = await fileToBase64(file);
+        setImage(base64);
+      } catch (err) {
+        console.error("Failed to process image", err);
+      }
     }
   };
 
@@ -67,8 +71,7 @@ const Livestock: React.FC = () => {
     if (!image) return;
     setLoading(true);
     try {
-      const base64 = image.split(',')[1];
-      const res = await analyzeLivestockDisease(base64, animalType, i18n.language as any);
+      const res = await analyzeLivestockDisease(image, animalType, i18n.language as any);
       setDiagResult(res);
     } catch (err) {
       console.error(err);

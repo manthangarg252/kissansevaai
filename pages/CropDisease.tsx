@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Upload, CheckCircle2, Loader2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { analyzeCropDisease } from '../geminiService';
+import { fileToBase64 } from '../utils';
 import AnalysisResultCard, { CropDiagnosisResult } from '../components/AnalysisResultCard.tsx';
 
 const CropDisease: React.FC = () => {
@@ -16,19 +17,20 @@ const CropDisease: React.FC = () => {
   const [location, setLocation] = useState('Nagpur, Maharashtra');
   const [soilType, setSoilType] = useState('Loamy');
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       if (file.size > 5 * 1024 * 1024) {
         setError("Image size too large. Please upload an image smaller than 5MB.");
         return;
       }
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImage(reader.result as string);
+      try {
+        const base64 = await fileToBase64(file);
+        setImage(base64);
         setError(null);
-      };
-      reader.readAsDataURL(file);
+      } catch (err) {
+        setError("Failed to process image");
+      }
     }
   };
 
@@ -43,9 +45,8 @@ const CropDisease: React.FC = () => {
     setError(null);
     
     try {
-      const base64 = image.split(',')[1];
       const data = await analyzeCropDisease(
-        base64, 
+        image, 
         location, 
         soilType, 
         i18n.language as any

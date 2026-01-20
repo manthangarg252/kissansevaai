@@ -54,7 +54,11 @@ export const analyzeCropDisease = async (
   }
 
   const data = await res.json();
-  return JSON.parse(data.candidates[0].content.parts[0].text || '{}');
+  const text = data?.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("") || data?.error?.message || "AI service is temporarily unavailable";
+  if (text === "AI service is temporarily unavailable" || data?.error) {
+    throw new Error(text);
+  }
+  return JSON.parse(text);
 };
 
 /**
@@ -95,7 +99,11 @@ export const analyzeLivestockDisease = async (
   }
 
   const data = await res.json();
-  return JSON.parse(data.candidates[0].content.parts[0].text || '{}');
+  const text = data?.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("") || data?.error?.message || "AI service is temporarily unavailable";
+  if (text === "AI service is temporarily unavailable" || data?.error) {
+    throw new Error(text);
+  }
+  return JSON.parse(text);
 };
 
 /**
@@ -118,7 +126,11 @@ export const getGeminiChatResponse = async (message: string, mode: string, langu
   }
 
   const data = await res.json();
-  return data.candidates[0].content.parts[0].text;
+  const reply = data?.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("") || data?.error?.message || "AI service is temporarily unavailable";
+  if (reply === "AI service is temporarily unavailable" || data?.error) {
+    throw new Error(reply);
+  }
+  return reply;
 };
 
 /**
@@ -142,7 +154,11 @@ export const getMarketRecommendations = async (form: any, language: Language) =>
   }
 
   const data = await res.json();
-  return data.candidates[0].content.parts[0].text;
+  const reply = data?.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("") || data?.error?.message || "AI service is temporarily unavailable";
+  if (reply === "AI service is temporarily unavailable" || data?.error) {
+    throw new Error(reply);
+  }
+  return reply;
 };
 
 /**
@@ -166,7 +182,11 @@ export const getTraderAdvisory = async (query: string, language: Language) => {
   }
 
   const data = await res.json();
-  return data.candidates[0].content.parts[0].text;
+  const reply = data?.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("") || data?.error?.message || "AI service is temporarily unavailable";
+  if (reply === "AI service is temporarily unavailable" || data?.error) {
+    throw new Error(reply);
+  }
+  return reply;
 };
 
 /**
@@ -190,7 +210,11 @@ export const getIoTInsights = async (sensorData: any, language: Language) => {
   }
 
   const data = await res.json();
-  return data.candidates[0].content.parts[0].text;
+  const reply = data?.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("") || data?.error?.message || "AI service is temporarily unavailable";
+  if (reply === "AI service is temporarily unavailable" || data?.error) {
+    throw new Error(reply);
+  }
+  return reply;
 };
 
 /**
@@ -213,7 +237,11 @@ export const getSchemeRecommendations = async (form: any, language: Language) =>
   }
 
   const data = await res.json();
-  return data.candidates[0].content.parts[0].text;
+  const reply = data?.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("") || data?.error?.message || "AI service is temporarily unavailable";
+  if (reply === "AI service is temporarily unavailable" || data?.error) {
+    throw new Error(reply);
+  }
+  return reply;
 };
 
 /**
@@ -236,7 +264,11 @@ export const estimateCarbonCredits = async (form: any, language: Language) => {
   }
 
   const data = await res.json();
-  return data.candidates[0].content.parts[0].text;
+  const reply = data?.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("") || data?.error?.message || "AI service is temporarily unavailable";
+  if (reply === "AI service is temporarily unavailable" || data?.error) {
+    throw new Error(reply);
+  }
+  return reply;
 };
 
 /**
@@ -263,7 +295,11 @@ export const getLoanAdvice = async (form: any, language: Language): Promise<Loan
   }
 
   const data = await res.json();
-  return JSON.parse(data.candidates[0].content.parts[0].text || '{}') as LoanAdvisorResult;
+  const text = data?.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("") || data?.error?.message || "AI service is temporarily unavailable";
+  if (text === "AI service is temporarily unavailable" || data?.error) {
+    throw new Error(text);
+  }
+  return JSON.parse(text) as LoanAdvisorResult;
 };
 
 /**
@@ -293,5 +329,9 @@ export const extractFieldsFromSpeech = async (text: string, fields: string[], la
   }
 
   const data = await res.json();
-  return JSON.parse(data.candidates[0].content.parts[0].text || '{}');
+  const textResponse = data?.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("") || data?.error?.message || "AI service is temporarily unavailable";
+  if (textResponse === "AI service is temporarily unavailable" || data?.error) {
+    throw new Error(textResponse);
+  }
+  return JSON.parse(textResponse);
 };
