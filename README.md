@@ -32,21 +32,6 @@ Agriculture faces critical challenges that threaten food security and farmer liv
 **KissanSevaAI** is a unified, AI-powered smart farming platform that democratizes access to agricultural expertise, market intelligence, and cutting-edge technology—all through a simple, voice-enabled, multi-language interface designed for farmers.
 
 ---
-
-## 🚀 Live Demo
-
-### 🔗 **Deployed Application** (Fully Functional)
-
-| Service | URL | Status |
-|---------|-----|--------|
-| **Frontend** | `https://your-frontend-url.com` | 🟢 Live |
-| **Backend API** | `https://your-backend-url.com` | 🟢 Live |
-| **ML Service** | `https://your-ml-service-url.com` | 🟢 Live |
-
-> **Try it now!** Upload a crop image, chat with our AI assistant, or check live mandi prices.
-
----
-
 ## ✨ Features & Innovation
 
 ### 🏆 Core AI-Powered Features
