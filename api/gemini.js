@@ -13,8 +13,8 @@ export default async function handler(req, res) {
       generationConfig,
     } = req.body;
 
-    if (!prompt) {
-      return res.status(400).json({ error: "Prompt is required" });
+    if (!prompt && !imageBase64) {
+      return res.status(400).json({ error: "Prompt or image is required" });
     }
 
     const apiKey = process.env.GEMINI_API_KEY;
@@ -23,13 +23,14 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: "Missing GEMINI_API_KEY in server env" });
     }
 
-   const url =
-  "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" +
-  apiKey;
+    const MODEL = "gemini-1.5-flash";
 
+    const url =
+      `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${apiKey}`;
 
     const parts = [];
 
+    // ✅ Image support
     if (imageBase64) {
       parts.push({
         inlineData: {
@@ -39,20 +40,27 @@ export default async function handler(req, res) {
       });
     }
 
-    parts.push({ text: prompt });
+    // ✅ Text support
+    if (prompt) {
+      parts.push({ text: prompt });
+    }
 
     const bodyObj = {
       contents: [{ parts }],
     };
 
+    // ✅ FIX: systemInstruction must be object format
     if (systemInstruction) {
-      bodyObj.systemInstruction = systemInstruction;
+      bodyObj.systemInstruction = {
+        parts: [{ text: systemInstruction }],
+      };
     }
 
-    if (responseMimeType || generationConfig) {
+    // ✅ Optional generation config (responseMimeType is not always supported reliably)
+    if (generationConfig || responseMimeType) {
       bodyObj.generationConfig = {
-        responseMimeType: responseMimeType || "text/plain",
-        ...generationConfig,
+        ...(generationConfig || {}),
+        ...(responseMimeType ? { responseMimeType } : {}),
       };
     }
 
@@ -64,6 +72,7 @@ export default async function handler(req, res) {
 
     const data = await response.json();
 
+    // ✅ If Gemini returns error
     if (!response.ok) {
       return res.status(response.status).json(data);
     }
